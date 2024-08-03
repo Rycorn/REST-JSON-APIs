@@ -2,7 +2,7 @@
 
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy(session_options={"expire_on_commit": False})
+db = SQLAlchemy()
 
 
 DEFAULT_IMAGE = "https://tinyurl.com/demo-cupcake"

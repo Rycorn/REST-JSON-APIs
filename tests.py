@@ -1,3 +1,4 @@
+from contextlib import contextmanager
 from unittest import TestCase
 
 from app import app
@@ -13,7 +14,6 @@ app.config['TESTING'] = True
 with app.app_context():
     db.drop_all()
     db.create_all()
-    db.session().expire_on_commit = False
 
 
 CUPCAKE_DATA = {
@@ -40,6 +40,7 @@ class CupcakeViewsTestCase(TestCase):
             Cupcake.query.delete()
 
             cupcake = Cupcake(**CUPCAKE_DATA)
+            db.session().expire_on_commit = False
             db.session.add(cupcake)
             db.session.commit()
 
