@@ -1,4 +1,3 @@
-from contextlib import contextmanager
 from unittest import TestCase
 
 from app import app
